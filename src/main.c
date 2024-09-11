@@ -25,8 +25,11 @@ int InputHandler(int *num, const char *text) {
 
 int SquareAlgorithm(int n, int m){
     int count = 0;
+    //Перебор первого числа
     for (int i = 0; i <= n; i++){
+        //Перебор второго числа
         for (int j = 0; j <= n; j++) {
+            //Если они соответствуют условию, счётчик растёт
             if (i + j == m) {
                 count++;
             }
@@ -38,16 +41,17 @@ int SquareAlgorithm(int n, int m){
 int main(void) {
     int n;  //Максимальное число на бочёнке
     int m;  //Сумма чисел на бочёнке
+    //Ввод числа n
     if (InputHandler(&n, "Введите максимальное число (> 0) на бочёнке: ")){
         return EXIT_FAILURE;
     }
+    //Ввод числа m
     if (InputHandler(&m, "Введите сумму чисел (> 0) на двух бочёнках: ")){
         return EXIT_FAILURE;
     }
-	printf("%d из ", n);
-	printf("%d\n", m);
-
+    printf("%d из %d\n", n, m);
+    
     printf("Найдено комбинаций: %d\n", SquareAlgorithm(n,m));
-
-	return EXIT_SUCCESS;
+    
+    return EXIT_SUCCESS;
 }
