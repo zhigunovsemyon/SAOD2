@@ -23,24 +23,28 @@ int InputHandler(int *num, const char *text) {
     return EXIT_SUCCESS;
 }
 
-long Algorithm1 (int n, int m) {
+long Algorithm1 (int n, int m, int doOut) {
     int count = 0;
     if (n * 2 < m) {
         return count;
     }
     int i = m / 2;
     if (i * 2 == m) {
-        printf("(%d:%d)\n", i, i);
+        if (doOut) {
+            printf("(%d:%d)\n", i, i);
+        }   
     }
     for (i++; i <= n; i++) {
         count++;
-        printf("(%d:%d)\n", i, m - i);
-        printf("(%d:%d)\n", m - i, i);
+        if (doOut) {
+            printf("(%d:%d)\n", i, m - i);
+            printf("(%d:%d)\n", m - i, i);
+        }
     }
 
     return count;
 }
-long Algorithm0(int n, int m){
+long Algorithm0(int n, int m, int doOut){
     //Счётчик итераций
     long count = 0;
     //Перебор первого числа
@@ -49,7 +53,9 @@ long Algorithm0(int n, int m){
         for (int j = 0; j <= n; j++) {
             //Если они соответствуют условию, комбинация отображается на экране
             if (i + j == m) {
-                printf("(%d:%d)\n", i, j);
+                if (doOut) {
+                    printf("(%d:%d)\n", i, j);
+                }   
             }
             //Увеличение счётчика итераций
             count++;
@@ -58,7 +64,8 @@ long Algorithm0(int n, int m){
     return count;
 }
 
-int main(void) {
+int main(const int argc, [[maybe_unused]] const char **argv) {
+    int doOut = (argc > 1) ? 0 : 1;
     int n;  //Максимальное число на бочёнке
     int m;  //Сумма чисел на бочёнке
     //Ввод числа n
@@ -71,8 +78,8 @@ int main(void) {
     }
     printf("%d из %d\n", n, m);
     
-    printf("Алгоритм 0. Совершено итераций: %ld\n", Algorithm0(n, m));
-    printf("Алгоритм 1. Совершено итераций: %ld\n", Algorithm1(n, m));
+    printf("Алгоритм 0. Совершено итераций: %ld\n", Algorithm0(n, m, doOut));
+    printf("Алгоритм 1. Совершено итераций: %ld\n", Algorithm1(n, m, doOut));
     
     return EXIT_SUCCESS;
 }
