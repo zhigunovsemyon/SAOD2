@@ -23,16 +23,19 @@ int InputHandler(int *num, const char *text) {
     return EXIT_SUCCESS;
 }
 
-int SquareAlgorithm(int n, int m){
-    int count = 0;
+long SquareAlgorithm(int n, int m){
+    //Счётчик итераций
+    long count = 0;
     //Перебор первого числа
     for (int i = 0; i <= n; i++){
         //Перебор второго числа
         for (int j = 0; j <= n; j++) {
-            //Если они соответствуют условию, счётчик растёт
+            //Если они соответствуют условию, комбинация отображается на экране
             if (i + j == m) {
-                count++;
+                printf("(%d:%d)\n", i, j);
             }
+            //Увеличение счётчика итераций
+            count++;
         }
     }
     return count;
@@ -51,7 +54,7 @@ int main(void) {
     }
     printf("%d из %d\n", n, m);
     
-    printf("Найдено комбинаций: %d\n", SquareAlgorithm(n,m));
+    printf("Совершено итераций: %ld\n", SquareAlgorithm(n,m));
     
     return EXIT_SUCCESS;
 }
