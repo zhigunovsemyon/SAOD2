@@ -23,6 +23,18 @@ int InputHandler(int *num, const char *text) {
     return EXIT_SUCCESS;
 }
 
+int SquareAlgorithm(int n, int m){
+    int count = 0;
+    for (int i = 0; i <= n; i++){
+        for (int j = 0; j <= n; j++) {
+            if (i + j == m) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
 int main(void) {
     int n;  //Максимальное число на бочёнке
     int m;  //Сумма чисел на бочёнке
@@ -34,6 +46,8 @@ int main(void) {
     }
 	printf("%d из ", n);
 	printf("%d\n", m);
+
+    printf("Найдено комбинаций: %d\n", SquareAlgorithm(n,m));
 
 	return EXIT_SUCCESS;
 }
