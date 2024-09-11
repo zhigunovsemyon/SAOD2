@@ -23,7 +23,7 @@ int InputHandler(int *num, const char *text) {
     return EXIT_SUCCESS;
 }
 
-long SquareAlgorithm(int n, int m){
+long Algorithm0(int n, int m){
     //Счётчик итераций
     long count = 0;
     //Перебор первого числа
@@ -54,7 +54,7 @@ int main(void) {
     }
     printf("%d из %d\n", n, m);
     
-    printf("Совершено итераций: %ld\n", SquareAlgorithm(n,m));
+    printf("Алгоритм 0. Совершено итераций: %ld\n", Algorithm0(n,m));
     
     return EXIT_SUCCESS;
 }
