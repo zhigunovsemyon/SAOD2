@@ -16,7 +16,7 @@ int InputHandler(int *num, const char *text) {
         printf("\nВведён EOF. Завершение работы!\n");
         return EOF;
     } 
-    if (out < 1) {
+    if (out < 1 || *num < 0) {
         printf("Некорректный ввод! Завершение работы!\n");
         return EXIT_FAILURE;
     }
@@ -24,11 +24,16 @@ int InputHandler(int *num, const char *text) {
 }
 
 int main(void) {
-    int n;
-    if (InputHandler(&n, "Введите максимальное число на бочёнке: ")){
+    int n;  //Максимальное число на бочёнке
+    int m;  //Сумма чисел на бочёнке
+    if (InputHandler(&n, "Введите максимальное число (> 0) на бочёнке: ")){
         return EXIT_FAILURE;
     }
-	printf("%d\n", n);
+    if (InputHandler(&m, "Введите сумму чисел (> 0) на двух бочёнках: ")){
+        return EXIT_FAILURE;
+    }
+	printf("%d из ", n);
+	printf("%d\n", m);
 
 	return EXIT_SUCCESS;
 }
