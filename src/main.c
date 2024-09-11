@@ -23,6 +23,23 @@ int InputHandler(int *num, const char *text) {
     return EXIT_SUCCESS;
 }
 
+long Algorithm1 (int n, int m) {
+    int count = 0;
+    if (n * 2 < m) {
+        return count;
+    }
+    int i = m / 2;
+    if (i * 2 == m) {
+        printf("(%d:%d)\n", i, i);
+    }
+    for (i++; i <= n; i++) {
+        count++;
+        printf("(%d:%d)\n", i, m - i);
+        printf("(%d:%d)\n", m - i, i);
+    }
+
+    return count;
+}
 long Algorithm0(int n, int m){
     //Счётчик итераций
     long count = 0;
@@ -54,7 +71,8 @@ int main(void) {
     }
     printf("%d из %d\n", n, m);
     
-    printf("Алгоритм 0. Совершено итераций: %ld\n", Algorithm0(n,m));
+    printf("Алгоритм 0. Совершено итераций: %ld\n", Algorithm0(n, m));
+    printf("Алгоритм 1. Совершено итераций: %ld\n", Algorithm1(n, m));
     
     return EXIT_SUCCESS;
 }
